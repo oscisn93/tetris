@@ -10,4 +10,10 @@ var (
 
 	//go:embed logo.png
 	LogoPng []byte
+
+	//go:embed ebitengine.png
+	EbitenginePng []byte
+
+	//go:embed pressstart2p.ttf
+	PerssStart2PTtf []byte
 )
