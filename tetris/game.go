@@ -25,15 +25,14 @@ func createSplashScreen(screen *ebiten.Image) {
     panic(err)
   }
   splashImage := ebiten.NewImageFromImage(img)
-  scale :=  float64(splashImage.Bounds().Dx()) / float64(ScreenWidth)
+  scale := splashImage.Bounds().Dx() / ScreenWidth
 
-  x := ScreenWidth / 2
-  y := ScreenHeight / 2
+  x := ScreenWidth / 2 - (splashImage.Bounds().Dx() / 2 * scale)
+  y := ScreenHeight / 2 - (splashImage.Bounds().Dy() / 2 * scale)
 
   options := &ebiten.DrawImageOptions{}
-  options.GeoM.Reset()
+  options.GeoM.Scale(float64(1 / scale), float64(1 / scale))
   options.GeoM.Translate(float64(x), float64(y))
-  options.GeoM.Scale(scale, scale)
 
   screen.DrawImage(splashImage, options)
 }
